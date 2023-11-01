@@ -1,7 +1,7 @@
 import pytest
-from pages.base_page import BasePage
-from pages.main_page import MainPage
-from settings import sets
+from ..pages.base_page import BasePage
+# from pages.main_page import MainPage
+from ..settings import sets
 
 
 @pytest.mark.smoke
@@ -18,7 +18,7 @@ class TestMainPage:
 
     def test_login_logout(self, browser):
         link_to_site = browser.current_url
-        page = BasePage(browser, link_to_site)
+
 
 
 
