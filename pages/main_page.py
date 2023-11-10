@@ -3,6 +3,7 @@ import inspect
 
 
 class MainPage(base_page.BasePage):
+
     def is_button_login(self):
         assert self.is_element_present(*locators.BasePageLocators.LOGIN_SIGNUP), \
             "Button login is not present"
@@ -108,7 +109,7 @@ class MainPage(base_page.BasePage):
     def is_samsung_j701(self):
         assert self.hover_action(*locators.BasePageLocators.HEAD_CAT_SAMSUNG), \
             "The element is not present"
-        assert self.hover_action(*locators.BasePageLocators.SUBCATEGORY_SAMSUNG_HEADER), \
+        assert self.is_element_present(*locators.BasePageLocators.SUBCATEGORY_SAMSUNG_HEADER), \
             "The element is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
@@ -217,6 +218,7 @@ class MainPage(base_page.BasePage):
     def subscribe_action(self, email):
         assert self.input_data(*locators.BasePageLocators.INPUT_SUBSCRIBE, email), \
             "The element is not present"
+        self.explicit_wait(4)
         assert self.click_element(*locators.BasePageLocators.SUBSCRIBE), \
             "The element is not present or intractable"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
@@ -224,6 +226,7 @@ class MainPage(base_page.BasePage):
     def is_alert_success_after_subscribe(self):
         assert self.is_element_appears_after_while(*locators.BasePageLocators.ALERT_SUCCESS, timeout=5), \
             "The element is not present"
+        print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
 
 

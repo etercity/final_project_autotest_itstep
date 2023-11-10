@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGIN_SIGNUP = (By.XPATH, "//div[@class='top_bar_user']/a[@href='user/login']")
+    LOGOUT = (By.XPATH, "//div[@class='top_bar_user']//a[@href = 'user/logout']")
     DETAILS = (By.XPATH, "//a[text() = 'Детали сотрудничества']")
     FEEDBACK = (By.XPATH, "//a[text()='Обратная связь']")
     DELIVERY = (By.XPATH, "//a[text()='Доставка']")
@@ -53,6 +54,28 @@ class MainPageLocators:
     BUTTON_NEXT_TREND = (By.XPATH, "//div[@class = 'trends']//div[@class = 'trends_next trends_nav slick-arrow']/i")
 
 
+class SignupLoginPageLocators:
+    GO_TO_SIGNUP = (By.XPATH, "//a[@href = 'user/signup']")
+    H1_SIGNUP = (By.XPATH, "//h1[text() = 'Регистрация']")
+    INPUT_EMAIL = (By.XPATH, "//input[@name = 'email']")
+    INPUT_PASSWORD = (By.XPATH, "//input[@name = 'password']")
+    BUTTON_SIGNUP = (By.XPATH, "//button[text() = 'Зарегистрироваться']")
+    H1_VHOD = (By.XPATH, "//h1[text() = 'Вход']")
+    BUTTON_LOGIN = (By.XPATH, "//button[text() = 'Войти']")
 
 
+class OrderPageLocators:
+    pass
+
+
+class CabinetPageLocators:
+    pass
+
+
+class CategoryPageLocators:
+    pass
+
+
+class SearchPageLocators:
+    pass
 
