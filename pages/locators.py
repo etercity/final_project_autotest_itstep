@@ -65,7 +65,17 @@ class SignupLoginPageLocators:
 
 
 class OrderPageLocators:
-    pass
+    FIRST_PRODUCT = (By.XPATH, "//div[@class = 'new_arrivals']//div[@class = 'slick-list draggable']/div/div[1]/div[1]")
+    BUTTON_ADD_FIRST_PRODUCT = (By.XPATH, "//div[@class = 'new_arrivals']//div[@class = 'slick-list draggable']/div/div[1]/div[1]//button[text() = 'В корзину!']")
+    BTN_CONTINUE_SHOP_POPUP = (By.XPATH, "//button[text() = 'Продолжить покупки']")
+    SECOND_PRODUCT_INPUT_NUMBER_QTY = (By.XPATH, "//div[@class = 'shop_content']//div[@id = 'product']/div[1]//input[@type = 'number']")
+    BUTTON_ADD_SECOND_PRODUCT = (By.XPATH, "//div[@class = 'shop_content']//div[@id = 'product']/div[1]//button")
+    CHECKOUT_BTN_POPUP = (By.XPATH, "//a[@href = 'cart/view']")
+    CART_REG_FORM = (By.XPATH, "//div[@class = 'cart-reg']")
+    INPUT_EMAIL = (By.XPATH, "//input[@name = 'email']")
+    INPUT_PASSWORD = (By.XPATH, "//input[@name = 'password']")
+    INPUT_NOTE = (By.XPATH, "//textarea[@name= 'note']")
+    CHECKOUT_BUTTON = (By.XPATH, "//button[@class = 'btn green']")
 
 
 class CabinetPageLocators:
