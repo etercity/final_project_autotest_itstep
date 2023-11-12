@@ -67,9 +67,13 @@ class SignupLoginPageLocators:
 class OrderPageLocators:
     FIRST_PRODUCT = (By.XPATH, "//div[@class = 'new_arrivals']//div[@class = 'slick-list draggable']/div/div[1]/div[1]")
     BUTTON_ADD_FIRST_PRODUCT = (By.XPATH, "//div[@class = 'new_arrivals']//div[@class = 'slick-list draggable']/div/div[1]/div[1]//button[text() = 'В корзину!']")
+    PRICE_FIRST_PRODUCT = (By.XPATH, "//div[@class = 'new_arrivals']//div[@class = 'slick-list draggable']/div/div[1]/div[1]//div[@class = 'product_price']")
     BTN_CONTINUE_SHOP_POPUP = (By.XPATH, "//button[text() = 'Продолжить покупки']")
     SECOND_PRODUCT_INPUT_NUMBER_QTY = (By.XPATH, "//div[@class = 'shop_content']//div[@id = 'product']/div[1]//input[@type = 'number']")
+    PRICE_SECOND_PRODUCT = (By.XPATH, "//div[@class = 'shop_content']//div[@id = 'product']/div[1]//div[@class = 'product_price']")
     BUTTON_ADD_SECOND_PRODUCT = (By.XPATH, "//div[@class = 'shop_content']//div[@id = 'product']/div[1]//button")
+    TOTAL_PRICE = (By.XPATH, "//tr[@class = 'cart-cena']/td[2]")
+    QTY = (By.XPATH, "//tr[@class = 'cart-itogo']/td[2]")
     CHECKOUT_BTN_POPUP = (By.XPATH, "//a[@href = 'cart/view']")
     CART_REG_FORM = (By.XPATH, "//div[@class = 'cart-reg']")
     INPUT_EMAIL = (By.XPATH, "//input[@name = 'email']")

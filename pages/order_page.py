@@ -1,5 +1,6 @@
 from ..pages import base_page, locators
 import inspect
+import re
 
 
 class OrderPage(base_page.BasePage):
@@ -11,10 +12,14 @@ class OrderPage(base_page.BasePage):
 
     def add_to_cart_first_product(self):
         assert self.hover_action(*locators.OrderPageLocators.FIRST_PRODUCT), \
-            "Button login is not present"
+            "The element is not present"
         assert self.click_element(*locators.OrderPageLocators.BUTTON_ADD_FIRST_PRODUCT), \
-            "The element currency is not present or intractable"
+            "The element is not present or intractable"
+        price = self.get_text(*locators.OrderPageLocators.PRICE_FIRST_PRODUCT)
+        price = int(price.replace(' грн.', ''))
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
+        if price:
+            return price
 
     def press_btn_continue_shop_popup(self):
         assert self.click_element(*locators.OrderPageLocators.BTN_CONTINUE_SHOP_POPUP), \
@@ -29,8 +34,26 @@ class OrderPage(base_page.BasePage):
             "The element currency is not present"
         assert self.input_data(*locators.OrderPageLocators.SECOND_PRODUCT_INPUT_NUMBER_QTY, 2), \
             "The element currency is not present"
+        price = self.get_text(*locators.OrderPageLocators.PRICE_SECOND_PRODUCT)
+        price = int(price.replace(' грн.', ''))*2
         assert self.click_element(*locators.OrderPageLocators.BUTTON_ADD_SECOND_PRODUCT), \
             "The element currency is not present or intractable"
+        print(f"{inspect.currentframe().f_code.co_name} - Ok")
+        if price:
+            return price
+
+    def check_total_price_qty(self, price1, price2, qty):
+        total_price = self.get_text(*locators.OrderPageLocators.TOTAL_PRICE)
+        self.explicit_wait(2)
+        total_price = int(re.sub("[^0-9]", "", total_price))
+        print(f"total_prise int: {total_price}")
+        total_actual = price1+price2
+        print(f"total_actual int: {total_actual}")
+        assert total_actual == total_price, \
+            "Total price doesn't match to actual"
+        qty_actual = int(self.get_text(*locators.OrderPageLocators.QTY))
+        assert qty_actual == qty, \
+            "QTY doesn't match to actual"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def press_btn_checkout_popup(self):

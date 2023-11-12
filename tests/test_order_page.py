@@ -30,20 +30,29 @@ class TestMainPage:
         page.is_button_logout_in_header()
         page = OrderPage(browser, self.link_to_cabinet)
         page.click_on_logo()
+        page.explicit_wait(2)
 
     def test_add_products_to_cart(self, browser):
         self.link_to_cabinet = browser.current_url
         page = OrderPage(browser, self.link_to_cabinet)
-        page.add_to_cart_first_product()
+        global price_1_product
+        price_1_product = page.add_to_cart_first_product()
         page.explicit_wait(2)
         page.press_btn_continue_shop_popup()
-        page.explicit_wait(1)
-        page.add_to_cart_second_product()
+        page.explicit_wait(2)
+        global price_2_product
+        price_2_product = page.add_to_cart_second_product()
+
+    def test_check_total_price_qty(self, browser):
+        self.link_to_cabinet = browser.current_url
+        page = OrderPage(browser, self.link_to_cabinet)
+        page.press_btn_checkout_popup()
+        page.explicit_wait(2)
+        page.check_total_price_qty(price_1_product, price_2_product, qty=3)
 
     def test_checkout(self, browser):
         self.link_to_cabinet = browser.current_url
         page = OrderPage(browser, self.link_to_cabinet)
-        page.press_btn_checkout_popup()
         page.add_notice()
         page.press_green_btn_checkout()
         page.is_alert_success()
